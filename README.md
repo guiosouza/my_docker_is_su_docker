@@ -1,5 +1,14 @@
 # Introdução ao Docker no Windows com WSL
 
+> 🎯 **Objetivo deste repositório**
+> Ensinar **apenas os conceitos básicos e essenciais de Docker**, o suficiente para você:
+>
+> * entender o que está acontecendo
+> * saber identificar problemas
+> * conseguir evoluir sozinho
+>
+> Todo o resto (comandos específicos, variações, casos raros) **não precisa ser decorado** — isso será resolvido com **boas perguntas para IA**.
+
 Este repositório tem como objetivo **ensinar Docker do zero**, usando **Windows + WSL + Ubuntu**, de forma prática e próxima da realidade de produção.
 
 A ideia é montar um ambiente de desenvolvimento moderno, estável e profissional, evitando o famoso problema do *"funciona na minha máquina"*.
@@ -7,6 +16,23 @@ A ideia é montar um ambiente de desenvolvimento moderno, estável e profissiona
 ---
 
 ## Visão geral da arquitetura
+
+Aqui o foco é entender **o mínimo necessário** para trabalhar com Docker no dia a dia.
+
+Você **não precisa memorizar comandos**, flags ou caminhos específicos. O que você precisa saber é:
+
+* o que é Windows
+* o que é WSL
+* o que é Linux
+* onde o Docker roda
+* quem conversa com quem
+
+O resto pode (e deve) ser perguntado para IA.
+
+> **Nota importante sobre aprendizado**
+> Neste repositório, o foco **não é decorar comandos** ou memorizar passo a passo. Na prática profissional, desenvolvedores usam **documentação oficial** e **IA (como ChatGPT)** o tempo todo.
+>
+> O objetivo aqui é **entender o que está acontecendo**, saber **onde procurar** e **como validar** se algo está funcionando corretamente.
 
 Neste setup, teremos:
 
@@ -95,20 +121,27 @@ code .
 
 ## 4. Instalando o Docker Engine no Ubuntu (WSL)
 
-Agora vamos instalar o **Docker Engine** diretamente no Ubuntu que está rodando no WSL.
+Aqui vamos seguir **exatamente a documentação oficial**.
 
-> Não estamos usando Docker Desktop neste setup.
+🔗 Link oficial:
+[https://docs.docker.com/engine/install/](https://docs.docker.com/engine/install/)
 
-### 4.1 Preparando o sistema
+> ⚠️ Importante: **não decore os comandos abaixo**.
+> O objetivo é entender o fluxo:
+>
+> 1. preparar o sistema
+> 2. adicionar o repositório
+> 3. instalar o Docker Engine
 
-Atualize os pacotes e instale dependências básicas:
+### 4.1 Preparação do sistema (conceito)
 
-```bash
-sudo apt update
-sudo apt install ca-certificates curl
-```
+Nesta etapa você aprende que:
 
-Esses pacotes permitem conexões HTTPS seguras e download de arquivos.
+* Linux usa um gerenciador de pacotes (`apt`)
+* software vem de repositórios
+* segurança é garantida por chaves GPG
+
+Os comandos específicos **não precisam ser memorizados**.
 
 ---
 
@@ -163,20 +196,26 @@ Isso instala:
 
 ## 5. Pós-instalação do Docker (Passo essencial)
 
-Documentação oficial:
+Esta etapa existe para resolver **um único problema**:
+
+> Por padrão, o Docker só funciona com `sudo`.
+
+O conceito importante aqui é:
+
+* usuários
+* grupos
+* permissões
+
+Você **não precisa decorar** os comandos de pós-instalação.
+
+O que você precisa saber é:
+
+* existe um grupo chamado `docker`
+* seu usuário precisa fazer parte dele
+* isso permite usar Docker sem `sudo`
+
+🔗 Documentação oficial:
 [https://docs.docker.com/engine/install/linux-postinstall/](https://docs.docker.com/engine/install/linux-postinstall/)
-
-Essa etapa é **obrigatória para uso no dia a dia**.
-
-### O problema
-
-Por padrão, o Docker só pode ser usado com `sudo`:
-
-```bash
-sudo docker ps
-```
-
-Isso não é prático nem recomendado.
 
 ---
 
@@ -214,6 +253,62 @@ Se aparecer a mensagem de sucesso **sem usar sudo**, está tudo funcionando corr
 ---
 
 ## 6. O que você aprendeu até aqui
+
+Até aqui, você aprendeu **o essencial**:
+
+* Docker roda em Linux
+* No Windows, usamos WSL para isso
+* Docker tem um daemon que roda como root
+* Você conversa com esse daemon via comandos
+* Permissões importam
+
+Você **não decorou comandos** — e isso é intencional.
+
+---
+
+## 7. Usando IA a seu favor (parte mais importante)
+
+Na prática profissional, ninguém decora Docker.
+
+O que bons devs fazem é **saber perguntar bem**.
+
+### Exemplos de bons prompts
+
+```text
+Explique com palavras simples o que este comando Docker faz:
+<cole o comando aqui>
+```
+
+```text
+Estou usando Docker no WSL. Esse erro significa o quê?
+<cole o erro aqui>
+```
+
+```text
+Qual é a forma correta e atual de instalar Docker Engine no Ubuntu 22.04?
+```
+
+```text
+Preciso de um Dockerfile simples para um projeto Node.js.
+Explique cada linha.
+```
+
+### Regra de ouro
+
+> Use a IA para **lembrar comandos**.
+> Use você mesmo para **pensar e decidir**.
+
+Esse é o equilíbrio correto.
+
+Mais importante do que decorar comandos, você aprendeu a:
+
+* Ler e seguir **documentação oficial**
+* Entender **por que** cada etapa existe
+* Validar se algo realmente está funcionando
+* Usar Linux, Docker e WSL de forma consciente
+* Não depender de memória, e sim de **raciocínio + boas fontes**
+
+Esse é exatamente o modelo de trabalho no mundo real.
 
 Até este ponto, você já configurou:
 
